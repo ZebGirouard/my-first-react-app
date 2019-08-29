@@ -1,24 +1,24 @@
 import React from 'react';
 
-function Form() {
-  const title = 'I am a Form'
+function Form({ title, fields}) {
+  title = title || 'I am a Form'
   return (
     <div>
       <h1>{ title }</h1>
       <form>
         <label htmlFor='name'>
-          Name
+          { fields[0] }
         </label>
         <input
-          id='name'
-          name='name'
+          id={ fields[0] }
+          name={ fields[0] }
         />
         <label htmlFor='weight'>
-          Weight
+          { fields[1] }
         </label>
         <input
-          id='weight'
-          name='weight'
+          id={ fields[1] }
+          name={ fields[1] }
         />
       </form>
     </div>

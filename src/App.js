@@ -4,12 +4,17 @@ import './App.css';
 import Form from './Form'
 
 function App() {
+  const title = 'Sign Up Your Pokemon';
+  const fields = [ 'name', 'weight' ];
   return (
     <div className="App">
       <p>
         Pleased to meet you!
       </p>
-      <Form />
+      <Form
+        title={ title }
+        fields={ fields }
+      />
     </div>
   );
 }
