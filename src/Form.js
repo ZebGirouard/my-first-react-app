@@ -9,7 +9,12 @@ function Form({ title, fields }) {
   return (
     <div>
       <h1>{ title }</h1>
-      <form>
+      <form
+        onSubmit={event => {
+          event.preventDefault()
+          console.log(stateFields)
+        }}
+      >
         { fields.map(field => (
           <span>
             <label htmlFor={ field }>
@@ -27,8 +32,8 @@ function Form({ title, fields }) {
             />
           </span>
         ))}
+        <input type='submit'/>
       </form>
-      <p>{ stateFields.name }</p>
     </div>
   )
 }
