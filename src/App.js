@@ -5,6 +5,7 @@ import Form from './Form';
 import Card from './Card';
 
 function App() {
+  const loggedIn = false;
   const title = 'Sign Up Your Pokemon';
   const fields = [ 'name', 'weight' ];
   const [ statePokemon, setPokemon ] = useState([]);
@@ -38,8 +39,7 @@ function App() {
         title={ title }
         fields={ fields }
       />
-      <p>{JSON.stringify(statePokemon)}</p>
-      { statePokemon.map(poke => (
+      { statePokemon.length && statePokemon.map(poke => (
           <Card
             image={ poke.image }
             name={ poke.name }
@@ -47,6 +47,7 @@ function App() {
           />
         )
       )}
+      { loggedIn ? <button>Log Out</button> : <button>Log In</button> }
     </div>
   );
 }

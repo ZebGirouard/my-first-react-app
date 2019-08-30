@@ -7,7 +7,7 @@ function Card({ name, weight, image }) {
         <li>Name: { name }</li>
         <li>Weight: { weight }</li>
       </ul>
-      <img src={ image } alt='pokemon'/>
+      <img src={ image || 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png' } alt='pokemon'/>
     </div>
   )
 }
