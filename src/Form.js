@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function Form({ title, fields}) {
+function Form({ title, fields }) {
+  const initialFields = {}
+  fields.forEach(field => initialFields[ field ] = '')
+  const [ stateFields, setFields ] = useState(initialFields)
+
   title = title || 'I am a Form'
   return (
     <div>
       <h1>{ title }</h1>
       <form>
-        <label htmlFor='name'>
-          { fields[0] }
-        </label>
-        <input
-          id={ fields[0] }
-          name={ fields[0] }
-        />
-        <label htmlFor='weight'>
-          { fields[1] }
-        </label>
-        <input
-          id={ fields[1] }
-          name={ fields[1] }
-        />
+        { fields.map(field => (
+          <span>
+            <label htmlFor={ field }>
+              { field }
+            </label>
+            <input
+              id={ field }
+              name={ field }
+              onChange={ event => {
+                console.log(event.target.value);
+                const { name, value } = event.target;
+                setFields({ ...stateFields, [ name ]: value });
+              }}
+              value={ stateFields[ field ] }
+            />
+          </span>
+        ))}
       </form>
+      <p>{ stateFields.name }</p>
     </div>
   )
 }
