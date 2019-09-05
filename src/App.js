@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import fire from './fire';
 import './App.css';
 import Form from './Form';
-import Card from './Card';
+import PokemonIndex from './PokemonIndex';
 
 function App() {
   const loggedIn = false;
@@ -42,24 +43,33 @@ function App() {
     }, [])
 
   return (
-    <div className="App">
-      <p>
-        Pleased to meet you!
-      </p>
-      <Form
-        title={ title }
-        fields={ fields }
-      />
-      { statePokemon.length > 0 && statePokemon.concat(firebasePokemon).map(poke => (
-          <Card
-            image={ poke.image }
-            name={ poke.name }
-            weight={ poke.weight }
-          />
-        )
-      )}
-      { loggedIn ? <button>Log Out</button> : <button>Log In</button> }
-    </div>
+    <Router>
+      <div className="App">
+        <Link to="/">All Pokemon</Link>
+        <Link to="/new">Create Pokemon</Link>
+        <Route
+          path="/new"
+
+          render={() =>
+            <Form
+              title={ title }
+              fields={ fields }
+            />
+          }
+        />
+        <Route
+        	path="/"
+        	exact
+        	render={() =>
+        		<PokemonIndex
+              statePokemon={ statePokemon }
+              firebasePokemon={ firebasePokemon }
+            />
+        	}
+        />
+        { loggedIn ? <button>Log Out</button> : <button>Log In</button> }
+      </div>
+    </Router>
   );
 }
 
