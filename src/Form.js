@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
+import fire from './fire.js';
 
 function Form({ title, fields }) {
-  const initialFields = {}
-  fields.forEach(field => initialFields[ field ] = '')
-  const [ stateFields, setFields ] = useState(initialFields)
+  const initialFields = {};
+  fields.forEach(field => initialFields[ field ] = '');
+  const [ stateFields, setFields ] = useState(initialFields);
 
-  title = title || 'I am a Form'
+  title = title || 'I am a Form';
   return (
     <div>
       <h1>{ title }</h1>
       <form
         onSubmit={event => {
-          event.preventDefault()
-          console.log(stateFields)
+          event.preventDefault();
+          console.log(stateFields);
+          fire.database().ref('pokemon').push(stateFields);
         }}
       >
         { fields.map(field => (
