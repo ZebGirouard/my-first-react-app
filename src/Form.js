@@ -1,7 +1,8 @@
 import React from 'react';
 
-function Form() {
-  const title = 'I am a Form';
+function Form({ title, fields }) {
+  const backupTitle = 'I am a Form';
+  title = title || backupTitle;
   return (
     <div>
       <h1>{ title }</h1>
