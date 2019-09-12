@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Form from './Form'
+import Form from './Form';
 
 function App() {
   const title = 'Sign Up Your Pokemon';
