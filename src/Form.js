@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Form({ title, fields}) {
-  title = title || 'I am a Form'
+function Form() {
+  const title = 'I am a Form';
   return (
     <div>
       <h1>{ title }</h1>
@@ -22,7 +22,7 @@ function Form({ title, fields}) {
         />
       </form>
     </div>
-  )
+  );
 }
 
 export default Form;
