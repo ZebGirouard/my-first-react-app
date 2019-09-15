@@ -5,7 +5,9 @@ function Form({ title, fields }) {
   fields.forEach(field => initialFields[ field ] = '')
   const [ stateFields, setFields ] = useState(initialFields)
 
-  title = title || 'I am a Form'
+  const backupTitle = 'I am a Form';
+  title = title || backupTitle;
+  
   return (
     <div>
       <h1>{ title }</h1>
@@ -30,7 +32,7 @@ function Form({ title, fields }) {
       </form>
       <p>{ stateFields.name }</p>
     </div>
-  )
+  );
 }
 
 export default Form;
