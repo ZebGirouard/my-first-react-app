@@ -17,7 +17,7 @@ function App() {
     pokemonRef.on('value', pokemon => {
       const pokemonArray = [];
       pokemon.forEach(poke => {
-        pokemonArray.push(poke.val())
+        pokemonArray.push(poke.val());
       });
       setFirebasePokemon(pokemonArray);
     })
